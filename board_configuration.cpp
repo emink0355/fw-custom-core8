@@ -109,6 +109,23 @@ void setBoardConfigOverrides() {
 void setBoardDefaultConfiguration(void) {
 	setInjectorPins();
 	setIgnitionPins();
+	--- a/firmware/config/boards/your_board/board_configuration.cpp
++++ b/firmware/config/boards/your_board/board_configuration.cpp
+@@ void setBoardDefaultConfiguration(engine_configuration_s *config) {
+ 
+     // --- Flex Fuel Sensor setup ---
+-    // (default: disabled)
++    // Enable flex fuel sensor on Digital Input 4 (F2)
++    config->flexFuelSensorInputPin = Gpio::F2;   // Digital Input 4
++    config->isFlexFuelSensorEnabled = true;
++
++    // Ignition Adder vs Ethanol %
++    config->ignitionFlexAdderEnabled = true;
++    config->ignitionFlexAdderMinE = 0.0f;
++    config->ignitionFlexAdderMaxE = 85.0f;
++    config->ignitionFlexAdderAtMinE = 0.0f;   // E0 → +0°
++    config->ignitionFlexAdderAtMaxE = 4.0f;   // E85 → +4°
+ }
 
 	engineConfiguration->isSdCardEnabled = true;
 }

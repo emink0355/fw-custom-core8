@@ -11,13 +11,15 @@ jobs:
   build-firmware:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-java@v4
+    - uses: actions/checkout@v4
+      with:
+          submodules: true
+          
+    - name: Set up java 17
+      uses: action/setup-java@4
       with:
         distribution: 'temurin'
         java-version: '17'
-    - uses: actions/checkout@v4
-      with:
-        submodules: true
 
     - name: Set run variables
       id: set-variables

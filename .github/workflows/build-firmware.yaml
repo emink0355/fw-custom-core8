@@ -14,8 +14,8 @@ jobs:
         submodules: recursive
         fetch-depth: 0
     - name: Update rusefi submodule to latest
-      run: 
-         cd ext/rusefi
+      run: | 
+        cd ext/rusefi
         git fetch origin
         git checkout origin/master
         cd ../..
